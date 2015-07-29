@@ -1,4 +1,4 @@
-import re
+import re2
 import shutil
 import argparse
 from os import path
@@ -6,6 +6,7 @@ from sys import stderr
 
 #
 #   Author: Daxda
+#   Modified: movb
 #   Date:   02.04.2014
 #   WTF:    This is a quick tool I've hacked together to easily remove the meta
 #           information as well as the annoying link on each page of eBooks down-
@@ -42,9 +43,11 @@ def remove_evil_links(pdf_data):
     pdf_data = pdf_data.encode("hex")
     # Remove each annotation element inside the PDF file (This removes the
     # "clickable" it-ebooks.info links)
-    new_data = re.sub(pattern, "", pdf_data)
+    print 'Removing evil links'
+    new_data = re2.sub(pattern, "", pdf_data)
     # Remove the actual links (link elements which are assigned to the annotations)
     new_data = new_data.replace("www.it-ebooks.info".encode("hex"), "")
+    print 'Done'
     return new_data.decode("hex")
 
 def main(args):
@@ -77,7 +80,7 @@ def main(args):
             if args.verbose:
                 print("Saving modified file: {0}".format(file_path))
     except KeyboardInterrupt:
-        pass
+        raise
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
