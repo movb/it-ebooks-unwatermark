@@ -1,6 +1,6 @@
 # It-ebooks unwatermark.
 
-Tool for cleaning all watermarks from books dawnloaded from it-ebooks.
+Tool for cleaning all watermarks from books dawnloaded from http://it-ebooks.info.
 Based on https://gist.github.com/Daxda/9939745
 
 Usage:
