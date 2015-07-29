@@ -89,9 +89,9 @@ if __name__ == "__main__":
                         nargs="*", required=True)
     parser.add_argument("--no-backup",
                         help="Disables the creating of backups for the files which"+\
-                             " are being processed. ",
+                             " are being processed.",
                         action="store_true")
-    parser.add_argument("-v", "--verbose", action="store_true")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Verbose output.")
 
     args = parser.parse_args()
     main(args)
